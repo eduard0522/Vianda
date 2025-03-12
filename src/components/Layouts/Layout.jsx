@@ -1,12 +1,29 @@
-import { BsFillCartPlusFill } from "react-icons/bs";
-import { FiPhoneCall } from "react-icons/fi";
-import { GoSearch } from "react-icons/go";
+import { BsFillCartPlusFill } from "react-icons/bs"
+import { FiPhoneCall } from "react-icons/fi"
+import { GoSearch } from "react-icons/go"
 import Image from "../../assets/Intersect.png"
 import Image2 from "../../assets/comment.png"
 import ImageProduct01 from "../../assets/product-01.png"
-import { MdOutlineRestaurantMenu } from "react-icons/md";
+import { MdOutlineRestaurantMenu } from "react-icons/md"
+import { useEffect, useState } from "react"
+import { getAllProducts } from "../../axios/Products"
 
 export const Layout = () => {
+  const [lista , setLista] = useState([]);
+
+  useEffect(() => {
+    
+  
+    const data = async () =>{
+      const dataJson = await getAllProducts();
+      console.log(dataJson)
+      setLista(dataJson);
+      
+    } 
+    data();
+  }, [])
+
+
   return (
     <main className=" w-full">
       <nav className="flex justify-between items-center shadow-xl rounded-full px-4 ">
@@ -63,136 +80,20 @@ export const Layout = () => {
         <h3 className="font-bold text-2xl my-4"> Nuestros productos </h3>
 
         <div className=" flex gap-8 flex-wrap justify-evenly">
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
 
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
+          {
+            lista.map( (item) => (
+              <div key={item.idMenu} className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
+              <img src={item.imagen} alt=""  className="rounded-xl"/>
+              <h4 className="font-bold">{item.nombre}</h4>
+              <p className="text-sm"> {item.descripcion} </p>
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> {item.precio}</span>
+                <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
+              </div>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-                  <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-                  <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-                  <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-                  <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-                  <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>          
-
-
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-            <img src={ImageProduct01} alt=""  className="rounded-xl"/>
-            <h4 className="font-bold">Haburguesa especial</h4>
-            <p className="text-sm">La mejor hamburguesa que te puedes comer.</p>
-            <div className="flex justify-between items-center">
-              <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> 18.000 </span>
-              <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
-            </div>
-          </div>
+            ))
+          }
 
         </div>
       </section>
