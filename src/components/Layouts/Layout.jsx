@@ -18,7 +18,6 @@ export const Layout = () => {
       const dataJson = await getAllProducts();
       console.log(dataJson)
       setLista(dataJson);
-      
     } 
     data();
   }, [])
@@ -83,10 +82,12 @@ export const Layout = () => {
 
           {
             lista.map( (item) => (
-              <div key={item.idMenu} className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl">
-              <img src={item.imagen} alt=""  className="rounded-xl"/>
+              <div key={item.nombre} className="flex flex-col gap-4 py-4 w-[300px] shadow-2xl p-4 rounded-xl h-[400px] justify-evenly">
+              <div className="w-4/5 m-auto h-[180px] tr">
+                <img src={item.imagen} alt=""  className="rounded-xl"/>
+              </div>
               <h4 className="font-bold">{item.nombre}</h4>
-              <p className="text-sm"> {item.descripcion} </p>
+              <p className="text-sm  line-clamp-3 " > {item.descripcion} </p>
               <div className="flex justify-between items-center">
                 <span className="font-bold text-xl"> <span className="font-bold text-[#fc291a]">$</span> {item.precio}</span>
                 <button className="shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2"> Agregar </button>
