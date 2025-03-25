@@ -1,12 +1,14 @@
 import Axios from "./Axios";
 
-
-
-
 export const getAllProducts = async () => {
-  const getProducts = await Axios.get('/menus/all')
-  const list = await getProducts;
-  return list.data
+  try {
+    const getProducts = await Axios.get('/menus/all')
+    return getProducts.data
+  } catch (e) {
+    console.log(e)
+    return[ "no data "]
+  }
+
 }
 
 
