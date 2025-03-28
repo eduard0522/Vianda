@@ -1,19 +1,19 @@
 
-
+import Footer from "../Footer/Footer"
 import NavHeader from "../Nav/NavHeader"
-import HeroIndex from "../HeroIndex/HeroIndex"
-import ProductCatalog from "../ProductCatalog/ProductCatalog"
-import CategorieCatalog from "../CategoriesCatalog/CategoriesCatalog"
 
-export const Layout = () => {
+
+export const Layout = ({children}) => {
   
   return (
-    <main className=" w-full">
+    <>
       <NavHeader />
-      <HeroIndex />
-      <CategorieCatalog/>
-      <ProductCatalog />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    </main>
+        <main className=" w-full">
+            { children }
+         <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </main>
+        <Footer />
+    </>
+   
   )
 }

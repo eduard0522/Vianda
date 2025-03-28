@@ -11,7 +11,7 @@ const HeroIndex = () => {
           <h2 className="text-4xl font-bold "> 
             Comprar tu comida también debe ser una experiencia asombrosa. 
             <span 
-                className="text-4xl text-green-500 font-bold flex"> ¡Déjanos sorprenderte! 
+                className="text-4xl text-Primary-600 font-bold flex"> ¡Déjanos sorprenderte! 
             </span>  
           </h2>
 
@@ -21,7 +21,7 @@ const HeroIndex = () => {
 
           <div className="flex gap-8 items-center justify-center">
             <div 
-              className=" mt-8 bg-[#41c74e] px-4 py-4 rounded-full flex  items-center justify-center gap-2 cursor-pointer hover:bg-green-600 w-[180px] shadow-xl"> 
+              className=" mt-8 bg-Primary-600 px-4 py-4 rounded-full flex  items-center justify-center gap-2 cursor-pointer hover:bg-Primary-800 w-[180px] shadow-xl"> 
               <FiPhoneCall className="text-white text-center "/> 
               <h2 className="font-bold text-white cursor-pointer"> Ordena ahora </h2>
             </div>

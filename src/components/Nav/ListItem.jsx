@@ -1,8 +1,11 @@
+import { Link } from "react-router"
 
 
 const ListItem = ({text, link}) => {
   return (
-    <li className="py-4 font-bold text-black cursor-pointer  hover:text-green-500" ><a to={link}> {text} </a></li>
+   <Link to={link}>
+      <li className="py-4 font-bold text-black cursor-pointer  hover:text-Primary-700" ><a> {text} </a></li>
+   </Link>
   )
 }
 
