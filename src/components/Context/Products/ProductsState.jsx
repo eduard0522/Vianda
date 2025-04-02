@@ -25,17 +25,21 @@ const ProductsState = (props) => {
 
   const getCategories = async () => {
     const categoriesData = await getAllCategories()
-    console.log( "categorieDATE", categoriesData)
     dispatch({
       type : "GET_CATEGORIES",
       payload : categoriesData
     })
   }
 
-  const setCategorieSelected = (categorie) => {
+  const setCategorieSelected = (categorieId ) => {
+
+    const categorieSelected = state.categories.find(categorie => (
+      categorie.categoriaId == categorieId
+    ))
+
     dispatch({
       type:"SET_CATEGORIE_SELECTED",
-      payload:categorie
+      payload:categorieSelected
     })
   }
 

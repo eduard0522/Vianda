@@ -2,6 +2,7 @@ import {BrowserRouter , Routes, Route} from "react-router-dom"
 import CategorieCatalog from "@/components/CategoriesCatalog/CategoriesCatalog"
 import IndexPage from "../../pages/Index"
 import Products from "../../pages/Products"
+import ProductCategory from "../../pages/ProductCategory"
 
 const AppRouter = () =>{ 
   return(
@@ -9,7 +10,7 @@ const AppRouter = () =>{
       <Routes>
           <Route  path="/"  element={ < IndexPage />}/>
           <Route path="/categorias"  element = { <CategorieCatalog /> }/>
-          <Route  path="/categorias/1" element = { < Products /> }/>
+          <Route  path="/categorias/:categorieId" element = { < ProductCategory /> }/>
           <Route  path="/menu" element = { < Products /> }/>
       </Routes>
     </BrowserRouter>

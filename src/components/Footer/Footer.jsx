@@ -1,13 +1,14 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
+import Logo from "../Nav/Logo";
+
 const Footer = () => {
   return (
     <footer className="bg-white text-gray-700 py-10 border-t">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
 
         <div>
-        <h2 className="flex text-2xl"> <span className="bg-Primary-600 rounded-sm px-1 text-center flex items-center justify-center text-white"> V </span> ianda
-        </h2>
+        <Logo/>
           <p className="mt-2 text-sm">Saborea el arte donde cada plato es una obra maestra culinaria.</p>
           <div className="flex space-x-3 mt-4">
             <FaFacebookF className="text-green-600 text-xl cursor-pointer" />

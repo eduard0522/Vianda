@@ -1,4 +1,4 @@
-import { GET_CATEGORIES , GET_PRODUCTS , SET_CATEGORIE_SELECTED , SET_PRODUCT_SELECTED } from "../types"
+import { GET_CATEGORIES , GET_PRODUCTS , SET_CATEGORIE_SELECTED , SET_PRODUCT_SELECTED } from "./types"
 
 
 const ProductsReducer = (state, action) => {
@@ -22,6 +22,7 @@ const ProductsReducer = (state, action) => {
        productSelected: payload
       }
     case SET_CATEGORIE_SELECTED:
+      console.log(payload)
       return{
         ...state,
         categorieSelected : payload

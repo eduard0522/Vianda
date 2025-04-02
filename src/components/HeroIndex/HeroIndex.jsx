@@ -3,15 +3,18 @@ import Image from "../../assets/Intersect.png"
 import Image2 from "../../assets/comment.png"
 import { MdOutlineRestaurantMenu } from "react-icons/md"
 
+import { Link } from "react-router"
+
 const HeroIndex = () => {
   return(
-    <section className="flex items-center justify-evenly">
-  
-        <div className=" flex flex-col justify-center items-center w-2/5">
-          <h2 className="text-4xl font-bold "> 
+    <section className="flex justify-evenly">
+
+        <div className=" flex flex-col justify-center gap-4  w-2/5">
+          <h1 className="text-4xl font-bold text-start w-full text-Primary-600"> Vianda </h1>
+          <h2 className="text-5xl font-bold "> 
             Comprar tu comida también debe ser una experiencia asombrosa. 
             <span 
-                className="text-4xl text-Primary-600 font-bold flex"> ¡Déjanos sorprenderte! 
+                className="text-4xl text-Primary-600 font-bold flex pt-4"> ¡Déjanos sorprenderte! 
             </span>  
           </h2>
 
@@ -25,7 +28,9 @@ const HeroIndex = () => {
               <FiPhoneCall className="text-white text-center "/> 
               <h2 className="font-bold text-white cursor-pointer"> Ordena ahora </h2>
             </div>
-            <button className="text-xl font-bold flex py-4 px-4 items-center justify-center mt-8 shadow-xl rounded-full cursor-pointer hover:bg-slate-50"> Menú <span> <MdOutlineRestaurantMenu className="text-2xl"/> </span> </button>
+            <Link to="/menu">
+              <button className="text-xl font-bold flex py-4 px-4 items-center justify-center mt-8 shadow-xl rounded-full cursor-pointer hover:bg-slate-50"> Menú <span> <MdOutlineRestaurantMenu className="text-2xl"/> </span> </button>
+            </Link>
           </div>
           
         </div>
@@ -37,5 +42,5 @@ const HeroIndex = () => {
       </section>
   )
 }
-
+ 
 export default HeroIndex

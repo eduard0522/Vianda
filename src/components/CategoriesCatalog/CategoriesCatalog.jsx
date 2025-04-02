@@ -5,12 +5,22 @@ import { CategorieCard } from "./CategorieCard"
 import ButtonBack from "../Buttons/NextBack/ButtonBack"
 import ButtonNext from "../Buttons/NextBack/ButtonNext"
 
+import { useNavigate } from "react-router"
+
 
 const CategorieCatalog = ( )  => {
-  
-  const { categories, getCategories} = useContext(ProductContext)
+  const navigate = useNavigate()
+  const { categories, getCategories , setCategorieSelected } = useContext(ProductContext )
+
+
+  const handleClickCard = (idCard) => {
+    setCategorieSelected(idCard)  
+    navigate(`/categorias/${idCard}`);
+  }
+
+
   useEffect(() => {
-      getCategories()
+       getCategories()
   }, [])
 
   return (
@@ -26,7 +36,7 @@ const CategorieCatalog = ( )  => {
         <div className=" flex gap-8 flex-wrap justify-evenly mt-12 px-10">
         {
           categories.map( (categorie) => (
-            <CategorieCard key={categorie.nombre}  categorie={categorie} />
+            <CategorieCard key={categorie.nombre}  categorie={categorie} setCategorie = {handleClickCard} />
           ))
         }
         </div>
