@@ -11,7 +11,8 @@ const ProductCategory = () => {
   const { categorieId } = useParams()
 
   useEffect(() => {
-      setCategorieSelected(categorieId || "")
+    const numbreId = Number(categorieId)
+      setCategorieSelected( numbreId )
   }, [categorieId])
   
   return(

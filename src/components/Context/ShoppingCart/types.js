@@ -1,0 +1,5 @@
+const INSERT_PRODUCT = "INSERT_PRODUCT"
+
+export {
+  INSERT_PRODUCT
+}

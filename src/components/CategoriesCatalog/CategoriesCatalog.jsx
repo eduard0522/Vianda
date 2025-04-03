@@ -24,7 +24,7 @@ const CategorieCatalog = ( )  => {
   }, [])
 
   return (
-    <section className="mt-24">
+    <section className="mt-24" id="categorias">
       <h2 className="text-center text-red-400 uppercase font-bold text-sm "> favoritas de los clientes </h2>
       <h3 className="text-3xl font-bold text-center"> Categorias Populares </h3>
     

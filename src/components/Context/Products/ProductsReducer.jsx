@@ -9,7 +9,7 @@ const ProductsReducer = (state, action) => {
       return{
         ...state,
         products : payload
-      }
+      } 
 
     case GET_CATEGORIES:
       return{

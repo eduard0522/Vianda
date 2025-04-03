@@ -8,7 +8,7 @@ const ProductsState = (props) => {
   const initialState = {
     products : [],
     categories : [],
-    categorieSelected: null,
+    categorieSelected: {},
     productSelected : null
   }
 
@@ -32,14 +32,21 @@ const ProductsState = (props) => {
   }
 
   const setCategorieSelected = (categorieId ) => {
+    if(!categorieId || categorieId === undefined || categorieId === null) 
+     return console.log("No se especifico ninguna categoria.")
 
-    const categorieSelected = state.categories.find(categorie => (
-      categorie.categoriaId == categorieId
+    const findCategorie = state.categories.find(categorie => (
+      categorie.categoriaId === categorieId
     ))
+
+    if(!findCategorie) return console.log("No se encontró una categoria con los datos insertados")
+
+
+    console.log(findCategorie , "estate")
 
     dispatch({
       type:"SET_CATEGORIE_SELECTED",
-      payload:categorieSelected
+      payload:findCategorie
     })
   }
 
@@ -57,7 +64,8 @@ const ProductsState = (props) => {
         getProducts,
         getCategories,
         setCategorieSelected,
-        setProductSelected
+        setProductSelected,
+        categorieSelected : state.categorieSelected
        }}>
           {props.children}
     </ProductContext.Provider>

@@ -6,7 +6,7 @@ import { ModalReducer } from "./ModalsReducer";
 
 const ModalsState = (props) => {
   const initialState = {
-    modalShoppingCart : true,
+    modalShoppingCart : false,
   }
 
   const [state , dispatch ] = useReducer( ModalReducer , initialState )
