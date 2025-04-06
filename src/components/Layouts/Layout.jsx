@@ -9,7 +9,7 @@ export const Layout = ({children}) => {
   return (
     <>
       <NavHeader />
-        <main className=" w-full">
+        <main className=" w-full p-8">
           <ShoppingCart />
             { children }
          <br /><br /><br /><br /><br /><br /><br /><br /><br />

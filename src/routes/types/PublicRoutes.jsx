@@ -3,12 +3,14 @@ import CategorieCatalog from "@/components/CategoriesCatalog/CategoriesCatalog"
 import IndexPage from "../../pages/Index"
 import Products from "../../pages/Products"
 import ProductCategory from "../../pages/ProductCategory"
+import Login from "../../components/Login/Login"
 
 const AppRouter = () =>{ 
   return(
     <BrowserRouter >
       <Routes>
           <Route  path="/"  element={ < IndexPage />}/>
+          <Route path="/login" element={ <Login />} />
           <Route path="/categorias"  element = { <CategorieCatalog /> }/>
           <Route  path="/categorias/:categorieId" element = { < ProductCategory /> }/>
           <Route  path="/menu" element = { < Products /> }/>

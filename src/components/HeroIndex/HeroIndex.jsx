@@ -23,14 +23,18 @@ const HeroIndex = () => {
           </p>
 
           <div className="flex gap-8 items-center justify-center">
-            <div 
-              className=" mt-8 bg-Primary-600 px-4 py-4 rounded-full flex  items-center justify-center gap-2 cursor-pointer hover:bg-Primary-800 w-[180px] shadow-xl"> 
-              <FiPhoneCall className="text-white text-center "/> 
-              <h2 className="font-bold text-white cursor-pointer"> Ordena ahora </h2>
-            </div>
+            <Link to="/menu">
+                <div 
+                  className=" mt-8 bg-Primary-600 px-4 py-4 rounded-full flex  items-center justify-center gap-2 cursor-pointer hover:bg-Primary-800 w-[180px] shadow-xl"> 
+                  <FiPhoneCall className="text-white text-center "/> 
+                  <h2 className="font-bold text-white cursor-pointer"> Ordena ahora </h2>
+                </div>
+            </Link>
+            
             <Link to="/menu">
               <button className="text-xl font-bold flex py-4 px-4 items-center justify-center mt-8 shadow-xl rounded-full cursor-pointer hover:bg-slate-50"> Menú <span> <MdOutlineRestaurantMenu className="text-2xl"/> </span> </button>
             </Link>
+            
           </div>
           
         </div>
