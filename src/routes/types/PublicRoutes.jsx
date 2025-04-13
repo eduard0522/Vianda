@@ -4,6 +4,7 @@ import IndexPage from "../../pages/Index"
 import Products from "../../pages/Products"
 import ProductCategory from "../../pages/ProductCategory"
 import Login from "../../components/Login/Login"
+import Register from "../../components/Register/Register"
 
 const AppRouter = () =>{ 
   return(
@@ -11,6 +12,7 @@ const AppRouter = () =>{
       <Routes>
           <Route  path="/"  element={ < IndexPage />}/>
           <Route path="/login" element={ <Login />} />
+          <Route path="/register" element={ <Register />} />
           <Route path="/categorias"  element = { <CategorieCatalog /> }/>
           <Route  path="/categorias/:categorieId" element = { < ProductCategory /> }/>
           <Route  path="/menu" element = { < Products /> }/>
