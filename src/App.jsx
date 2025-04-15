@@ -9,15 +9,15 @@ function App() {
 
 
   return (
-    <ShoppingCartState>
-      <ModalsState > 
+    <ModalsState > 
+       <ShoppingCartState>
         <ProductsState>
           <AppRouter >
             <Outlet />
           </AppRouter>
         </ProductsState>
-      </ModalsState>
-    </ShoppingCartState>
+      </ShoppingCartState>
+    </ModalsState>
     
   )
 }

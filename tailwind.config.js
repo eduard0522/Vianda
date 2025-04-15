@@ -17,6 +17,9 @@ export default {
           100: "#bbf7d0",
           50: "#e1ffeba7"
         }
+      },
+      boxShadow: {
+        'top-sides': '0 -6px 4px -2px rgba(0,0,0,0.1), -6px 0 4px -2px rgba(0,0,0,0.1), 6px 0 4px -2px rgba(0,0,0,0.2)',
       }
     },
   },

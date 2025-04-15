@@ -9,9 +9,10 @@ import ListItem from "./ListItem"
 import Logo from "./Logo.jsx"
 import ModalContext from "../Context/Modals/ModalContext"
 import ShoppingCartContext from "../Context/ShoppingCart/shoppingCartContext.jsx"
+import { FaUserCog } from "react-icons/fa";
 
 const NavHeader = () => {
-  const { changeStateShoppinCart } = useContext(ModalContext)
+  const { changeStateShoppinCart , changeStateUserPanel} = useContext(ModalContext)
   const { products } = useContext(ShoppingCartContext)
 
   return(
@@ -31,6 +32,10 @@ const NavHeader = () => {
           { products.length > 0 ? <span className="text-white absolute -top-4 right-0  bg-Primary-700 rounded-full text-xs w-4 h-4 text-center ">  { products.length}</span> : ""} 
           
           <BsFillCartPlusFill  className={`text-black text-2xl cursor-pointer  ${products.length > 0 ? 'text-green-500' : 'text-black'} hover:text-green-500`} onClick={changeStateShoppinCart}/> 
+          </div>
+
+          <div className="flex items-center justify-center " onClick={changeStateUserPanel}>
+            <FaUserCog className="text-2xl hover:text-Primary-700 cursor-pointer"/>
           </div>
 
           <div className="bg-Primary-600 px-4 py-1 rounded-full flex items-center justify-center gap-2 cursor-pointer  hover:bg-Primary-800"> <     FiPhoneCall className="text-white text-center "/> 
