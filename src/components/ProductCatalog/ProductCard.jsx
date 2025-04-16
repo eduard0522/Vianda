@@ -2,12 +2,15 @@ import { useContext } from 'react'
 import ShoppingCartContext from '../Context/ShoppingCart/shoppingCartContext'
 
 import { FaStar } from 'react-icons/fa'
+import ModalContext from '../Context/Modals/ModalContext'
 
 export const ProductCard = ({ product }) => {
   const { insertProduct } = useContext(ShoppingCartContext)
+  const { changeStateConfirmAddProduct, confirmAddProduct } = useContext(ModalContext)
   const handleClick = () => {
     insertProduct(product)
-    alert("Prducto agregado correctamente")
+    changeStateConfirmAddProduct()
+    console.debug(confirmAddProduct)
   }
 
   return (
@@ -27,7 +30,7 @@ export const ProductCard = ({ product }) => {
           <span className='font-bold text-[#fc291a]'>$</span> {product.precio}
         </span>
         <button
-          className='shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2 hover:bg-green-500 hover:text-white'
+          className='shadow-xl  rounded-full  py-2 font-semibold text-green-500 w-1/2 hover:bg-green-500 hover:text-white transition-colors duration-500 ease-in-out'
           onClick={handleClick}
         >
           {' '}

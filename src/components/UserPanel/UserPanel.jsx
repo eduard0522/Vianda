@@ -1,30 +1,40 @@
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { BiSolidEdit } from "react-icons/bi";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import ModalContext from "../Context/Modals/ModalContext";
-import { Link, useNavigate } from "react-router";
+import {useNavigate } from "react-router";
+import DataUpdateForm from "./DataUpdateForm";
+import {ConfirmModal} from "../Modals/ConfirmModal"
+import UserContext from "../Context/User/UserContext";
+
+
 const UserPanel = () => {
-  const { userPanel, changeStateUserPanel } = useContext(ModalContext)
+  const { userPanel, changeStateUserPanel, updateUser, confirmUpdateUser , changeStateConfirmUpdateUser , changeStateUpdateUser } = useContext(ModalContext)
   const navigate = useNavigate()
-  console.log(userPanel)
-  const [ user ,setUser ] = useState(null)
-  let User = null
-  try {
-    const storedUser = localStorage.getItem('user')
-     User =  storedUser ? JSON.parse(storedUser).user : null
-     
-  } catch (error) {
-    console.error('Error parsing user from localStorage:', error)
-  }
+  const { user , setUser} = useContext(UserContext)
 
   useEffect(() => {
-    setUser(User)
+    const storedUser = localStorage.getItem('user')
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser).user
+      setUser({
+        email: parsedUser.email || '',
+        name: parsedUser.name || '',
+        phone: parsedUser.phone || '',
+        address: parsedUser.address || '',
+        id : parsedUser.id || ""
+      })
+    }
   }, [])
+
+  useEffect(() => {
+    console.log("user:" , user)
+  },[user])
 
   const handleClickButton = () => {
     if(user){
-      localStorage.clear()
+      localStorage.removeItem("user")
       setUser(null)
     }else{
       navigate("/login")
@@ -40,17 +50,23 @@ const UserPanel = () => {
     }
     
   return (
-    <aside className={` w-[500px] shadow-top-sides bg-white fixed z-50 right-4 bottom-0 rounded-t-xl transform transition-transform duration-700 ease-in-out ${  userPanel ? 'translate-x-0 opacity-100' : '-right-4 translate-x-full translate-y-full opacity-50' }`}>
+    <>
+    
+    <aside className={` w-[500px] shadow-top-sides bg-white fixed z-50 right-4 bottom-0 rounded-t-xl transition-all duration-500 ease-in-out${  userPanel ? 'translate-x-0 opacity-100' : '-right-4 translate-x-full translate-y-full opacity-50' }`}>
 
-       <div onClick={changeStateUserPanel}> <IoCloseCircle className="text-3xl text-Primary-600 absolute top-2 right-2 hover:text-Primary-800 cursor-pointer" /> </div>
+    { updateUser ? (<DataUpdateForm />) : 
+      ( <> 
+        <div onClick={changeStateUserPanel}> 
+          <IoCloseCircle className="text-3xl text-Primary-600 absolute top-2 right-2 hover:text-Primary-800 cursor-pointer" /> 
+        </div>
         <article className="flex flex-col items-center justify-between p-8">
             <div className="flex justify-center w-full gap-4 border-b-2 border-gray-100 pb-4">
-               <div className="relative cursor-pointe group cursor-pointer">
+               <div className="relative cursor-pointe group cursor-pointer" onClick={changeStateUpdateUser}>
                   <FaRegUserCircle  className="text-6xl "/>
                   <BiSolidEdit  className="text-xl font-bold absolute -bottom-2 -right-2 z-10 group-hover:text-Primary-800 cursor-pointer"/>
                </div>
                 <div>
-                  <p className="text-2xl font-bold"> {user ? user.name : 'Usuario invitado'} </p>
+                  <p className="text-2xl font-bold"> { user ? user.name : 'Usuario invitado'} </p>
                   <p className="text-lg"> {user ? user.email : 'invitado@email.com' }  </p>
                 </div>
             </div>
@@ -80,7 +96,12 @@ const UserPanel = () => {
             <span className="text-Primary-700 underline font-semibold cursor-pointer hover:text-Primary-800" onClick={handleClickLink}> { !user ? 'Crear cuenta' : 'Eliminar cuenta'} </span>
 
         </article>
+        
+        </>)} 
     </aside>
+
+    <ConfirmModal modal={confirmUpdateUser} setModal={changeStateConfirmUpdateUser} text="Usuario actualizado correctamente" textButton="Ok" />
+    </>
   )
 }
 

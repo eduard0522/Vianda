@@ -42,10 +42,11 @@ const FormLogin = () => {
             name : response.data.name || "user",
             phone : response.data.phone || "no phone",
             email : response.data.email || "noemail@mail.com",
-            adrress : response.data.address || "",
-            orders : response.data.orders || []
+            address : response.data.address || "",
+            orders : response.data.orders || [],
+            id : response.data.idUsuario || ""
           }
-        }) )
+        }))
         changeStateLoginForm()
       } else{
         setError('Creadenciales invalidos')

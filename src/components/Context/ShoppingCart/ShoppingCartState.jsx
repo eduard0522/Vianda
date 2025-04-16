@@ -1,7 +1,7 @@
 import React, { useReducer } from "react"
 import ShoppingCartContext from "./shoppingCartContext"
 import ShoppingCartReducer from "./shoppingCartReducer"
-import { INSERT_PRODUCT , DELETE_PRODUCT , UPDATE_QUANTITY} from "./types"
+import { INSERT_PRODUCT , DELETE_PRODUCT , UPDATE_QUANTITY , GENERATE_ORDER} from "./types"
 
 const ShoppingCartState  = (props) => {
   const initialState = {
@@ -9,7 +9,6 @@ const ShoppingCartState  = (props) => {
   }
 
   const [state , dispatch ] = useReducer(ShoppingCartReducer , initialState)
-
 
   const insertProduct = ( product ) => {
 
@@ -39,12 +38,20 @@ const ShoppingCartState  = (props) => {
     })
   }
 
+  const generateOrder = () => {
+    dispatch({
+      type: GENERATE_ORDER,
+      payload : state.products
+    })
+  }
+
   return(
     <ShoppingCartContext.Provider value={{
       products : state.products,
       insertProduct ,
       deleteProduct,
-      updateQuantity
+      updateQuantity,
+      generateOrder
     }}>
       {props.children}
     </ShoppingCartContext.Provider>

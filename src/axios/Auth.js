@@ -27,31 +27,61 @@ export const LoginRequest = async (data , setLoading , setError)  =>{
   }
 };
 
-export const RegisterRequest = async (data, setLoading ,  setError) => {
-  try {
-    const response = await Axios.post("/usuarios/create",
-      data,
-      {
-        headers:{
-          "Content-Type" : "application/json",
-        },
+  export const RegisterRequest = async (data, setLoading ,  setError) => {
+    try {
+      const response = await Axios.post("/usuarios/create",
+        data,
+        {
+          headers:{
+            "Content-Type" : "application/json",
+          },
+        }
+      )
+      if(response){
+        return response
       }
-    )
-    if(response.status === 409){
-      console.log("error buscado")
-    }
-    return response
-  } catch (error) {
-    console.log(error)
-    setError("Error al iniciar Sesión, intente de nuevo mas tarde")
-    setLoading(false)
-    if([409, 404 , 400].includes(error.status)){
-      setError(error.response.data)
-    }
-    return false
-  }
 
-  finally{
-    setLoading(false)
+      return setError("Error al inicar la Sesión")
+    } catch (error) {
+      setError("Error al iniciar Sesión, intente de nuevo mas tarde")
+      setLoading(false)
+      if([409, 404 , 400].includes(error.status)){
+        setError(error.response.data)
+      }
+      return false
+    }
+
+    finally{
+      setLoading(false)
+    }
+  } 
+
+  export const updateUserRequest = async (data , setError , setLoading, userId ) => {
+    try {
+      if(!userId){
+        console.log(userId , "userId")
+        return false
+      }
+
+      const response = await Axios.patch(`/usuarios/update/${userId}` , data ,
+        {
+          headers:{
+            "Content-Type" : "application/json"
+          },
+        }
+     )
+  
+     if(response){
+      return response
+     }
+     return setError("Error al realizar la actualización de sus datos.")
+    } catch (error) {
+      if([409, 404 , 400].includes(error.status)){
+        setError(error.response.data)
+      }
+
+      return false
+    } finally {
+      setLoading(false)
+    }
   }
-} 
