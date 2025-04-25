@@ -1,5 +1,5 @@
 
-import { DELETE_PRODUCT, INSERT_PRODUCT, UPDATE_QUANTITY } from "./types";
+import { DELETE_PRODUCT, INSERT_PRODUCT, UPDATE_QUANTITY , CLEAR_CART } from "./types";
 
 const ShoppingCartReducer = (state, action) => {
 
@@ -34,6 +34,11 @@ const ShoppingCartReducer = (state, action) => {
       return{
         ...state,
         products: state.products.filter(product => product.idMenu !== payload)
+      }
+      case CLEAR_CART:
+      return{
+        ...state,
+        products: payload
       }
 
     case UPDATE_QUANTITY:{

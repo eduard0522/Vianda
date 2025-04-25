@@ -18,8 +18,8 @@ const ModalsState = (props) => {
     modalShoppingCart : false,
     registrationForm: false,
     loginForm : false,
-    userPanel : true,
-    updateUser : true,
+    userPanel : false,
+    updateUser : false,
     confirmUpdateUser : false,
     confirmAddProduct  : false
   }

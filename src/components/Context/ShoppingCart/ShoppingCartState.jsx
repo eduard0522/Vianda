@@ -1,7 +1,7 @@
 import React, { useReducer } from "react"
 import ShoppingCartContext from "./shoppingCartContext"
 import ShoppingCartReducer from "./shoppingCartReducer"
-import { INSERT_PRODUCT , DELETE_PRODUCT , UPDATE_QUANTITY , GENERATE_ORDER} from "./types"
+import { INSERT_PRODUCT , DELETE_PRODUCT , UPDATE_QUANTITY , GENERATE_ORDER , CLEAR_CART} from "./types"
 
 const ShoppingCartState  = (props) => {
   const initialState = {
@@ -10,11 +10,16 @@ const ShoppingCartState  = (props) => {
 
   const [state , dispatch ] = useReducer(ShoppingCartReducer , initialState)
 
-  const insertProduct = ( product ) => {
+  const clearCart = () => {
+    dispatch({
+      type : CLEAR_CART,
+      payload: []
+    })
+  }
 
+  const insertProduct = ( product ) => {
     if( !product ) {
       return console.error("Error: Producto no enviado")}
-
     dispatch({
       type:INSERT_PRODUCT,
       payload: product
@@ -51,7 +56,8 @@ const ShoppingCartState  = (props) => {
       insertProduct ,
       deleteProduct,
       updateQuantity,
-      generateOrder
+      generateOrder,
+      clearCart
     }}>
       {props.children}
     </ShoppingCartContext.Provider>

@@ -1,3 +1,4 @@
+
 import Axios from "./Axios";
 
 export const getAllProducts = async () => {
@@ -11,6 +12,5 @@ export const getAllProducts = async () => {
   }
 
 }
-
 
 

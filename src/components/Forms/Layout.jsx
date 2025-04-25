@@ -1,5 +1,4 @@
 import ImageLogin from '../../assets/Intersect.png'
-import { ConfirmModal } from '../Modals/ConfirmModal'
 
 const LayoutForms = ({ form, children, }) => {
   return (
@@ -19,6 +18,7 @@ const LayoutForms = ({ form, children, }) => {
         </div>
       </div>
     </section>
+
   )
 }
 

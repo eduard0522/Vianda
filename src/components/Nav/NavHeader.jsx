@@ -23,6 +23,7 @@ const NavHeader = () => {
         <ul className="flex w-2/5 justify-between items-center">
           <ListItem text="Inicio" link="/" />
           <ListItem text = "Menú" link="/menu"/>
+          <ListItem text = "Pedidos" link="/ordenes"/>
          <ListItem text = "Servicios" link="/services" />
         </ul>
 

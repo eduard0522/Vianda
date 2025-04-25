@@ -7,12 +7,15 @@ import { IoCloseCircle, IoRemoveCircle, IoAddCircle } from "react-icons/io5";
 
 
 import ShoppingCartContext from "../Context/ShoppingCart/shoppingCartContext";
+import UserContext from "../Context/User/UserContext";
+import { createOrderHelper } from "./helper";
 
 const ShoppingCart = () => {
 
   const navigate = useNavigate()
   const { modalShoppingCart, changeStateShoppinCart}  = useContext(ModalContext)
-  const { products, deleteProduct, updateQuantity } = useContext(ShoppingCartContext) 
+  const { products, deleteProduct, updateQuantity , clearCart  } = useContext(ShoppingCartContext) 
+  const { user } = useContext(UserContext)
 
   const handleClickAddProducts = () => {
       navigate("/menu")
@@ -21,6 +24,17 @@ const ShoppingCart = () => {
   const handleClickDelete = (productId) => {
     deleteProduct(productId)
   }
+   const handleOnclickGenerateOrder = async (total) => {
+    if(products && products.length > 0){
+       const createOder = await createOrderHelper(products , user , total)
+       if(createOder){
+          clearCart()
+         return alert("orden creada")
+        
+       }
+    }
+    return alert("error")
+   }
 
   const handleClickUpdate= (product , action) => {
     updateQuantity(product , action)
@@ -29,10 +43,10 @@ const ShoppingCart = () => {
   let total = 0
   return (
        
-      <dialog className="fixed max-h-[80vh] top-0 left-0 bottom-0 right-0 bg-[#00000061] z-10" open={modalShoppingCart}>
+      <dialog className="fixed max-h-[80vh] top-0  shadow-2xl left-0 bottom-0 right-0 bg-[#00000061] z-10" open={modalShoppingCart}>
         <section className="w-2/6 bg-white shadow-2xl fixed bottom-0 right-0 h-[35rem] z-10 rounded-xl text-center">
           <div className="absolute top-4 right-4" onClick={changeStateShoppinCart}>  
-            <IoCloseCircle className="text-2xl text-Primary-700 cursor-pointer hover:text-Primary-800 transition-colors duration-300 ease-in-out"
+            <IoCloseCircle className="text-3xl text-Primary-700 cursor-pointer hover:text-Primary-800 transition-colors duration-300 ease-in-out"
             /> 
           </div>
           <h2 className="font-bold text-center text-2xl pt-4"
@@ -84,6 +98,7 @@ const ShoppingCart = () => {
                   <div className="flex justify-between bt-1 border-t-gray-300 px-8">
                       <span className="font-bold text-Primary-800 text-2xl"> $ {total} </span>
                       <button
+                          onClick={() => {handleOnclickGenerateOrder(total)}}
                           className="py-2 px-8 bg-Primary-700 text-white rounded-xl  font-bold hover:bg-Primary-800  transition-all hover:scale-105"
                       > Generar pedido
                       </button>

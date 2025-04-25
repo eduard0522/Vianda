@@ -97,7 +97,7 @@ const DataUpdateForm = () => {
     }
   }
   return (
-    <article className='py-8 px-12 rounded-md backdrop-blur-sm bg-[#ffffff] shadow-md   flex flex-col gap-4 transition-all duration-500 ease-in-out'>
+    <article className='py-8 px-12 rounded-xl backdrop-blur-sm bg-[#ffffff] shadow-md   flex flex-col gap-4 transition-all duration-500 ease-in-out'>
       <div className='text-Primary-600 text-3xl cursor-pointer hover:text-Primary-800 absolute top-4 left-4' onClick={changeStateUpdateUser}>  
          <IoArrowBack/> 
       </div>

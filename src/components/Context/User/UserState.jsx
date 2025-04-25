@@ -1,13 +1,17 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import UserContext from "./UserContext";
 import UserReducer from "./UserReducer";
 
 import { UPDATE_USER } from "./types";
+import { getUserHelp } from "./getUserHelper";
 
 const UserState = ({children}) => {
+
+
   const initialState  ={
     user : null
   }
+
 
   const [ state , dispatch ]  = useReducer( UserReducer , initialState)
 
@@ -18,6 +22,14 @@ const UserState = ({children}) => {
       payload: user
     })
   }
+
+  useEffect(() => {
+    const storedUser = getUserHelp()
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
 
   return(
     <UserContext.Provider value={{

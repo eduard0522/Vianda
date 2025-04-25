@@ -5,6 +5,7 @@ import Products from "../../pages/Products"
 import ProductCategory from "../../pages/ProductCategory"
 import RegisterPage from "../../pages/Register"
 import LoginPage from "../../pages/Login"
+import OrderDetailPage from "../../pages/OderDetails"
 
 const AppRouter = () =>{ 
   return(
@@ -16,6 +17,7 @@ const AppRouter = () =>{
           <Route path="/categorias"  element = { <CategorieCatalog /> }/>
           <Route  path="/categorias/:categorieId" element = { < ProductCategory /> }/>
           <Route  path="/menu" element = { < Products /> }/>
+          <Route path="/ordenes" element= { <OrderDetailPage />} />
       </Routes>
     </BrowserRouter>
   )
