@@ -1,12 +1,13 @@
 import { useContext, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 import InputForm from '../Login/InputForm'
 import { RegisterRequest } from '../../../axios/Auth'
 import ModalContext from '../../Context/Modals/ModalContext'
 
 const RegistrationForm = () => {
-  const { changeStateRegistrationForm } = useContext(ModalContext)
+  const navigate = useNavigate()
+  const { changeStateRegistrationForm , } = useContext(ModalContext)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -45,21 +46,12 @@ const handleSubmit = async (e) => {
     try {
       const response = await RegisterRequest(formData, setLoading, setError)
       if (response) {
-        localStorage.setItem('user', JSON.stringify({
-          user: {
-            name : response.data.name || "user",
-            phone : response.data.phone || "no phone",
-            email : response.data.email || "noemail@mail.com",
-            adrress : response.data.address || "",
-            orders : response.data.orders || []
-          }
-        }) )
         changeStateRegistrationForm()
       } else{
         setError('Creadenciales invalidos')
       }
-      
     } catch (e) {
+      console.debug(e)
       setError('Ocurrió un error al iniciar sesión')
     } finally{
       setLoading(false)

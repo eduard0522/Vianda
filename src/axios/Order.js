@@ -29,4 +29,25 @@ export const updateOrderStatus = async (orderId, newStatus) => {
     console.error('Error al actualizar el estado de la orden:', error.response?.data || error.message);
     throw error;
   }
+
+
 };
+
+export const deleteOrder = async (orderId) => {
+  try {
+    const response = await Axios.delete(`/orders/delete/${orderId}`, {
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if(response){
+      console.log('Orden eliminada:', response.data);
+      return response
+    }
+  } catch (error) {
+    console.error('Error al eliminar la orden:', error.response?.data || error.message);
+    throw error;
+  }
+}

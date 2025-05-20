@@ -12,6 +12,7 @@ function OrderDetails({ order }) {
     );
   }
 
+ 
 
   const { orderId, state, paymentMethod, total, address, date, idCliente } = order;
   const formattedDate = new Date(date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' });
@@ -94,6 +95,8 @@ function OrderDetails({ order }) {
             </div>
             <span className="text-2xl font-bold text-green-600">${total.toLocaleString()}</span>
           </div>
+
+          <button className='bg-red-300 py-1 px-4 rounded-md hover:bg-red-600 hover:text-white transition-all'> Eliminar orden </button>
         </div>
       </div>
     </div>

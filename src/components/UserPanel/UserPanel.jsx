@@ -7,6 +7,7 @@ import {useNavigate } from "react-router";
 import DataUpdateForm from "./DataUpdateForm";
 import {ConfirmModal} from "../Modals/ConfirmModal"
 import UserContext from "../Context/User/UserContext";
+import { deleteAccount } from "../../axios/Auth";
 
 
 const UserPanel = () => {
@@ -35,15 +36,31 @@ const UserPanel = () => {
   const handleClickButton = () => {
     if(user){
       localStorage.removeItem("user")
+      localStorage.removeItem("token")
       setUser(null)
+      navigate("/login")
     }else{
       navigate("/login")
     }
     }
     
-    const handleClickLink = () => {
+    
+    const handleClickLink = async () => {
       if(user){
-        alert("Esta función aún no se ha implementado.")
+        const deleteConfirm = confirm('¿ Seguro que deseas eliminar está cuenta ?')
+        if(deleteConfirm) {
+          try {
+            const response = await deleteAccount(user.id)
+            if(response){
+              alert("cuenta eliminada exitosamente") 
+              navigate("/login")
+              localStorage.removeItem('user')
+            }
+          } catch (error) {
+            console.debug(error)
+            alert("ocurrió un error al eliminar la cuenta, intente de nuevo mas tarde")
+          }
+        }
       }else{
         navigate("/register")
       }

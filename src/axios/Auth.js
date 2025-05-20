@@ -1,5 +1,20 @@
 import Axios from "./Axios";
 
+
+export const AuthValidate = async () => {
+  try{
+    const response = await Axios.get("/api/auth/validate")
+    if(!response){
+      return false
+    }
+    return true
+  }catch(error){
+    console.debug(error)
+    return false
+  }
+}
+
+
 export const LoginRequest = async (data , setLoading , setError)  =>{
   try {
 
@@ -85,3 +100,37 @@ export const LoginRequest = async (data , setLoading , setError)  =>{
       setLoading(false)
     }
   }
+
+
+  export const deleteAccount = async (userId) => {
+    try {
+      if (!userId) {
+        console.log("userId no proporcionado:", userId);
+        return false;
+      }
+  
+      const response = await Axios.delete(`/usuarios/delete/${userId}`, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+  
+      if (response.status === 200) {
+        console.log("Usuario eliminado exitosamente.");
+        return true;
+      }
+  
+      return false;
+  
+    } catch (error) {
+      const status = error.response?.status;
+  
+      if ([400, 404, 409].includes(status)) {
+        console.log("Error controlado:", status);
+      } else {
+        console.log("Error inesperado:", error.message);
+      }
+  
+      return false;
+    }
+  };

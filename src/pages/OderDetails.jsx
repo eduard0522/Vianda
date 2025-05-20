@@ -19,7 +19,11 @@ const OrderDetailPage = () => {
 
   if(!orders || !orders?.length || orders.length <= 0){
     return(
-      <h2> No hay ordenes. </h2>
+      <>
+       <Layout>
+          <h2 className='mt-48 text-3xl text-center font-bold '> Aún no tienes pedidos. </h2>
+      </Layout>
+      </>
     )
   }
 

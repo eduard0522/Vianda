@@ -3,6 +3,7 @@ import { useContext, useState } from 'react'
 import { Link } from 'react-router'
 import InputForm from './InputForm'
 import ModalContext from '../../Context/Modals/ModalContext'
+import { setLocalStorage } from '../../../helpers/localStorageSetUser'
 
 const FormLogin = () => {
   const { changeStateLoginForm } = useContext(ModalContext)
@@ -37,21 +38,11 @@ const FormLogin = () => {
     try {
       const response = await LoginRequest(formData, setLoading, setError)
       if (response) {
-        localStorage.setItem('user', JSON.stringify({
-          user: {
-            name : response.data.name || "user",
-            phone : response.data.phone || "no phone",
-            email : response.data.email || "noemail@mail.com",
-            address : response.data.address || "",
-            orders : response.data.orders || [],
-            id : response.data.idUsuario || ""
-          }
-        }))
+        setLocalStorage(response.data)
         changeStateLoginForm()
       } else{
         setError('Creadenciales invalidos')
       }
-      
     } catch (e) {
       setError('Ocurrió un error al iniciar sesión')
     } finally{

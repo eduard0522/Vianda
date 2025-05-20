@@ -91,6 +91,7 @@ const DataUpdateForm = () => {
       }
       
     } catch (e) {
+      console.debug(e)
       setError('Ocurrió un error al actualizar los datos')
     } finally{
       setLoading(false)

@@ -19,8 +19,8 @@ const Register = () => {
           modal={registrationForm} 
           setModal={changeStateRegistrationForm} 
           text="Felicidades, usuario registrado con éxito."
-          textButton="Pedir"
-          link="/"
+          textButton="Ingresar"
+          link="/login"
         />
       </>
   )
