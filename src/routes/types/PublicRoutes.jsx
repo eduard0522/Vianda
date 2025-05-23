@@ -8,6 +8,7 @@ import LoginPage from "../../pages/Login"
 import OrderDetailPage from "../../pages/OderDetails"
 import NotFound from "../../pages/NotFound"
 import AuthValidator from "../../Auth/AuthValidator"
+import OrderPage from "../../pages/OrderPage"
 
 const AppRouter = () =>{ 
   return(
@@ -19,9 +20,8 @@ const AppRouter = () =>{
           <Route path="/categorias"  element = { <CategorieCatalog /> }/>
           <Route  path="/categorias/:categorieId" element = { < ProductCategory /> }/>
           <Route  path="/menu" element = { < Products /> }/>
-
           <Route element ={ <AuthValidator />}>
-            <Route path="/ordenes" element= { <OrderDetailPage />} />
+            <Route path="/ordenes" element= { <OrderPage />} />
           </Route>
           <Route path="*" element = { <NotFound /> } /> 
       </Routes>

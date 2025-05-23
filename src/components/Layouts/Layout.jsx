@@ -19,6 +19,8 @@ export const Layout = ({children}) => {
         <main className=" w-full p-8">
           <ShoppingCart />
             { children }
+
+
          <br /><br /><br /><br /><br /><br /><br /><br /><br />
         </main>
         <Footer />

@@ -16,7 +16,7 @@ const NavHeader = () => {
   const { products } = useContext(ShoppingCartContext)
 
   return(
-    <nav className="fixed top-3 left-4  right-4 flex justify-between items-center shadow-xl rounded-full px-4 z-20 bg-white">
+    <nav className="fixed top-3 left-6 right-6  flex justify-between items-center shadow-xl rounded-full px-4 z-20 bg-white">
       <div className=" font-bold text-black cursor-pointer text-center">
         <Logo />
         </div>
